@@ -1,0 +1,32 @@
+﻿@model EligoCustomerPortal.Data.Models.Customer
+
+@{
+    ViewData["Title"] = $"Customer Details for {Model.FirstName} {Model.LastName}";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Html.DisplayNameFor(model => model.ID) @Html.DisplayFor(model => model.ID)</h1>
+
+<div class="row">
+    <div class="col-sm-12">
+        @*TODO: Create a template.*@
+        <p>
+            @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)<br />
+            @Html.DisplayFor(model => model.EmailAddress)
+            @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+            {
+                <br />@Html.DisplayFor(model => model.PhoneNumber)
+            }
+        </p>
+        <h2>Customer Accounts</h2>
+
+        <ul>
+            @foreach (var account in Model.Accounts)
+            {
+                <li>
+                    <a asp-action="Details" asp-controller="Account" asp-route-id="@account.ID">@Html.DisplayFor(a => account.ID)</a> (@Html.DisplayFor(a => account.AccountType.Name))
+                </li>
+            }
+        </ul>
+    </div>
+</div>

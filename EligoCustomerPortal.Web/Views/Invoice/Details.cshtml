@@ -1,0 +1,88 @@
+﻿@model EligoCustomerPortal.Data.Models.Invoice
+
+@{
+    ViewData["Title"] = $"Invoice Detail for Invoice #{Model.ID}";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h1>Invoice #@Html.DisplayFor(model => model.ID)</h1>
+
+<div class="row">
+    <div class="col-sm-6">
+        <p>
+            @Html.DisplayFor(model => model.Account.Customer)
+        </p>
+    </div>
+    <div class="col-sm-6">
+        <p>
+            Account: <a asp-action="Details" asp-controller="Account" asp-route-id="@Model.Account.ID">@Html.DisplayFor(model => model.Account.ID)</a> (@Html.DisplayFor(model => model.Account.AccountType.Name))<br />
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Billing Address:</h3>
+        @Html.DisplayFor(model => model.Account.BillingAddress)
+    </div>
+    <div class="col-sm-6">
+        <h3>Service Address:</h3>
+        @Html.DisplayFor(model => model.Account.ServiceAddress)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Invoice Details</h2>
+        <dl class="row">
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.InvoiceDate)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.InvoiceDate)</dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Amount)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Amount)</dd>
+            @if (!Model.IsPaid && Model.Payments.Any())
+            {
+                var openAmount = Model.Amount - Model.Payments.Sum(p => p.Amount);
+
+                <dt class="col-sm-2">Balance:</dt>
+                <dd class="col-sm-10">@openAmount.ToString("C")</dd>
+            }
+        </dl>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Payment Information</h2>
+        <p>
+            Payment Status: @(Model.IsPaid ? "Paid" : "Open")
+        </p>
+        @if (!Model.IsPaid)
+        {
+            <p>
+                <a asp-action="MakePayment" asp-controller="Payment" asp-route-id="@Model.ID">Make A Payment</a>
+            </p>
+        }
+
+        @if (Model.Payments.Any())
+        {
+            <h3>Payments:</h3>
+
+            <dl class="row">
+                @foreach (var payment in Model.Payments)
+                {
+                    <dt class="col-sm-2">@Html.DisplayNameFor(p => payment.ID)</dt>
+                    <dd class="col-sm-10">@Html.DisplayFor(p => payment.ID)</dd>
+                    <dt class="col-sm-2">@Html.DisplayNameFor(p => payment.PaymentDate)</dt>
+                    <dd class="col-sm-10">@Html.DisplayFor(p => payment.PaymentDate)</dd>
+                    <dt class="col-sm-2">@Html.DisplayNameFor(p => payment.Amount)</dt>
+                    <dd class="col-sm-10">@Html.DisplayFor(p => payment.Amount)</dd>
+                }
+            </dl>
+
+            <p>
+                Total Payments: @(Model.Payments.Sum(p => p.Amount).ToString("C"))
+            </p>
+        }
+    </div>
+</div>

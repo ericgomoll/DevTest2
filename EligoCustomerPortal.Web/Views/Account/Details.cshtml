@@ -1,0 +1,51 @@
+﻿@model EligoCustomerPortal.Web.Models.AccountViewModel
+
+@{
+    ViewData["Title"] = $"Account Details for Account #{Model.Account.ID}";
+}
+
+<h1>Account @Model.Account.ID</h1>
+
+<div class="row">
+    <div class="col-sm-6">
+
+
+        <h2>Account Info</h2>
+
+        <dl class="row">
+            <dt class="col-sm-4">@Html.DisplayNameFor(m => m.Account.ID)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(m => m.Account.ID)</dd>
+        </dl>
+    </div>
+    <div class="col-sm-6">
+        <h3>Customer</h3>
+        @Html.DisplayFor(model => Model.Customer)
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Billing Address</h3>
+        @Html.DisplayFor(model => Model.BillingAddress)
+    </div>
+    <div class="col-sm-6">
+        <h3>Service Address</h3>
+        @Html.DisplayFor(model => Model.ServiceAddress)
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Open Invoices</h3>
+
+        @foreach (var invoice in Model.Invoices)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">Invoice #:</dt>
+                <dd class="col-sm-10"><a asp-action="Details" asp-controller="Invoice" asp-route-id="@invoice.ID">@Html.DisplayFor(i => invoice.ID)</a></dd>
+                <dt class="col-sm-2">Date:</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(i => invoice.InvoiceDate)</dd>
+                <dt class="col-sm-2">Amount: </dt>
+                <dd class="col-sm-10">@Html.DisplayFor(i => invoice.Amount)</dd>
+            </dl>
+        }
+    </div>
+</div>

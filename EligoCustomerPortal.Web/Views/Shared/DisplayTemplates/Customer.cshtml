@@ -1,0 +1,11 @@
+﻿@model EligoCustomerPortal.Data.Models.Customer
+
+<p>
+    @Html.DisplayNameFor(model => model.ID): <a asp-action="Details" asp-controller="Customer" asp-route-id="@Model.ID">@Html.DisplayFor(model => model.ID)</a><br />
+    @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)<br />
+    @Html.DisplayFor(model => model.EmailAddress)
+    @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+    {
+        <br />@Html.DisplayFor(model => model.PhoneNumber)
+    }
+</p>

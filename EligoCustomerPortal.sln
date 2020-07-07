@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EligoCustomerPortal.Web", "EligoCustomerPortal.Web\EligoCustomerPortal.Web.csproj", "{C409ED43-52C2-4D07-9948-0A2F0A582193}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EligoCustomerPortal.Data.Tests", "EligoCustomerPortal.Data.Tests\EligoCustomerPortal.Data.Tests.csproj", "{58A1BAAD-082E-4C84-B6FB-FBACB33F4D40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EligoCustomerPortal.Data", "EligoCustomerPortal.Data\EligoCustomerPortal.Data.csproj", "{EA4C8A1D-DCDD-4FE7-9935-43FE61D94481}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C409ED43-52C2-4D07-9948-0A2F0A582193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C409ED43-52C2-4D07-9948-0A2F0A582193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C409ED43-52C2-4D07-9948-0A2F0A582193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C409ED43-52C2-4D07-9948-0A2F0A582193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A1BAAD-082E-4C84-B6FB-FBACB33F4D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A1BAAD-082E-4C84-B6FB-FBACB33F4D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A1BAAD-082E-4C84-B6FB-FBACB33F4D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A1BAAD-082E-4C84-B6FB-FBACB33F4D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4C8A1D-DCDD-4FE7-9935-43FE61D94481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4C8A1D-DCDD-4FE7-9935-43FE61D94481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4C8A1D-DCDD-4FE7-9935-43FE61D94481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4C8A1D-DCDD-4FE7-9935-43FE61D94481}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9A61178-0377-4A1E-9415-77C954A62AA7}
+	EndGlobalSection
+EndGlobal
