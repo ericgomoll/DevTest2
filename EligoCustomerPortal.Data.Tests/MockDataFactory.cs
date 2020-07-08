@@ -12,6 +12,10 @@ namespace EligoCustomerPortal.Data.Tests
     /// <remarks>This could be extended for generating mock instances of objects on the fly for future test creation.</remarks>
     public static class MockDataFactory
     {
+        /// <summary>
+        /// Creates mock data from EF's In-Memory database functionality.
+        /// </summary>
+        /// <returns>An instance of <see cref="EligoDataContext"/> with mocked data to test against.</returns>
         public static EligoDataContext CreateContext()
         {
             //Create a mock context using EF's In-Memory Database functionality.
@@ -32,6 +36,8 @@ namespace EligoCustomerPortal.Data.Tests
 
             return mockContext;
         }
+
+        #region Data Population Methods
 
         private static IQueryable<Customer> GetCustomerData()
         {
@@ -118,5 +124,7 @@ namespace EligoCustomerPortal.Data.Tests
 
             return paymentMethods.AsQueryable();
         }
+
+        #endregion
     }
 }

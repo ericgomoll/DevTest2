@@ -36,6 +36,7 @@ namespace EligoCustomerPortal.Data.Services
             var existingPaymentSum = _context.Payments.Where(p => p.InvoiceID == payment.InvoiceID).Sum(p => p.Amount);
             var totalPayments = existingPaymentSum + payment.Amount;
 
+            //if the total payments applied to the invoice cover the total invoice amount, mark invoice as paid.
             if (totalPayments >= invoice.Amount)
             {
                 invoice.IsPaid = true;
